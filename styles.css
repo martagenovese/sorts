@@ -1,0 +1,96 @@
+:root {
+    --title-color: #4b071a;
+    --shadow: #00000072;
+    --background-color: #f0f0f0;
+    --canvas-border-color: #ccc;
+    --canvas-background-color: #fff;
+    --button-background-color: #007bff;
+    --button-hover-background-color: #0056b3;
+    --button-text-color: #fff;
+    --text-color: #333;
+    --highlight-color: #ffdd57;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(270deg, #0758263c, #4c920242, #0f4a8944, #20075e42);
+    background-size: 800% 800%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h1 {
+    color: var(--title-color);
+    margin-top: 20px;
+    font-family: "Quintessential", serif;
+    text-shadow: var(--shadow) 2px 2px 2px;
+    font-weight: bolder;
+}
+
+h2 {
+    color: var(--title-color);
+    margin-top: 10px;
+    font-family: "Quintessential", serif;
+    text-shadow: var(--shadow) 2px 2px 2px;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.canvas-wrapper {
+    text-align: center;
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+    max-width: 25%; /* Ensure the wrapper does not exceed one-fourth of the page width */
+}
+
+.canvas-wrapper:hover {
+    transform: scale(1.1);
+}
+
+canvas {
+    border: 2px solid var(--canvas-border-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    background-color: var(--canvas-background-color);
+}
+
+p {
+    word-wrap: break-word; /* Ensure long words break to fit within the container */
+    color: var(--text-color);
+    font-size: 1rem;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+button {
+    margin: 20px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-background-color);
+    box-shadow: 0 6px 12px var(--hover-shadow-color);
+}

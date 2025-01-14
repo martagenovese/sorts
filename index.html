@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Quintessential&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Sorting Algorithm Visualizer</h1>
+    <div class="canvas-container">
+        <div class="canvas-wrapper">
+            <h2>Bubble Sort</h2>
+            <canvas id="sortingCanvas1" width="500" height="200"></canvas>
+            <p>Time Complexity: O(n²)<br>Space Complexity: O(1)</p>
+            <p id="bubbleSortTime">Time Taken: </p>
+            <p>History: Bubble Sort is one of the simplest sorting algorithms. It was named for the way larger elements "bubble" to the top of the list.</p>
+            <p>Fun Fact: Despite its simplicity, Bubble Sort is not suitable for large datasets due to its poor performance.</p>
+            <p>Inventor: Bubble Sort is often attributed to Edward H. Friend in 1956.</p>
+        </div>
+        <div class="canvas-wrapper">
+            <h2>Selection Sort</h2>
+            <canvas id="sortingCanvas2" width="500" height="200"></canvas>
+            <p>Time Complexity: O(n²)<br>Space Complexity: O(1)</p>
+            <p id="selectionSortTime">Time Taken: </p>
+            <p>History: Selection Sort is an in-place comparison sorting algorithm. It has been used since the early days of computing.</p>
+            <p>Fun Fact: Selection Sort is not stable, meaning it does not preserve the relative order of equal elements.</p>
+            <p>Inventor: Selection Sort was described by Donald Shell in 1959.</p>
+        </div>
+        <div class="canvas-wrapper">
+            <h2>Insertion Sort</h2>
+            <canvas id="sortingCanvas3" width="500" height="200"></canvas>
+            <p>Time Complexity: O(n²)<br>Space Complexity: O(1)</p>
+            <p id="insertionSortTime">Time Taken: </p>
+            <p>History: Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time.</p>
+            <p>Fun Fact: Insertion Sort is efficient for small datasets and is often used as a building block for more complex algorithms.</p>
+            <p>Inventor: Insertion Sort has been known since the early 1950s and is often attributed to John von Neumann.</p>
+        </div>
+    </div>
+    <button onclick="updateCanvasSizes()">Generate New Array</button>
+    <script src="scripts.js"></script>
+</body>
+</html>
