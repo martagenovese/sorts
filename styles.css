@@ -1,5 +1,6 @@
 :root {
     --title-color: #4b071a;
+    --secondary: #a93455;
     --shadow: #00000072;
     --background-color: #f0f0f0;
     --canvas-border-color: #ccc;
@@ -18,9 +19,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background: linear-gradient(270deg, #0758263c, #4c920242, #0f4a8944, #20075e42);
-    background-size: 800% 800%;
-    animation: gradientAnimation 15s ease infinite;
+    background-color: #ff9cb472;
 }
 
 @keyframes gradientAnimation {
@@ -32,8 +31,9 @@ body {
 h1 {
     color: var(--title-color);
     margin-top: 20px;
-    font-family: "Quintessential", serif;
+    font-family: "Jersey 15", serif;
     text-shadow: var(--shadow) 2px 2px 2px;
+    font-size: 50px;
     font-weight: bolder;
 }
 
@@ -41,7 +41,6 @@ h2 {
     color: var(--title-color);
     margin-top: 10px;
     font-family: "Quintessential", serif;
-    text-shadow: var(--shadow) 2px 2px 2px;
 }
 
 .canvas-container {
@@ -81,7 +80,7 @@ button {
     margin: 20px;
     padding: 12px 24px;
     font-size: 1rem;
-    background-color: var(--button-background-color);
+    background-color: var(--title-color);
     color: var(--button-text-color);
     border: none;
     border-radius: 25px;

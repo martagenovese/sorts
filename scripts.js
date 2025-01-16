@@ -14,13 +14,21 @@ let array2 = [];
 let array3 = [];
 const arraySize = 50;
 
+let sortingInProgress = false;
+let cancelSorting = false;
+
 function updateCanvasSizes() {
+    if (sortingInProgress) {
+        cancelSorting = true;
+        return;
+    }
     const canvasWidth = window.innerWidth / 4;
     canvas1.width = canvasWidth;
     canvas2.width = canvasWidth;
     canvas3.width = canvasWidth;
     const barWidth = canvasWidth / arraySize;
     generateArray(barWidth);
+    startSortingAnimations(barWidth);
 }
 
 function generateArray(barWidth) {
@@ -41,7 +49,7 @@ function generateArray(barWidth) {
 function drawArray(ctx, array, barWidth, highlightedIndices = []) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     for (let i = 0; i < array.length; i++) {
-        ctx.fillStyle = highlightedIndices.includes(i) ? 'red' : 'blue';
+        ctx.fillStyle = highlightedIndices.includes(i) ? '#4b071a' : '#a93455';
         ctx.fillRect(i * barWidth, ctx.canvas.height - array[i], barWidth, array[i]);
     }
 }
@@ -51,6 +59,7 @@ async function bubbleSort(array, ctx, barWidth) {
     let len = array.length;
     for (let i = 0; i < len; i++) {
         for (let j = 0; j < len - i - 1; j++) {
+            if (cancelSorting) return;
             if (array[j] > array[j + 1]) {
                 [array[j], array[j + 1]] = [array[j + 1], array[j]];
                 drawArray(ctx, array, barWidth, [j, j + 1]);
@@ -68,6 +77,7 @@ async function selectionSort(array, ctx, barWidth) {
     for (let i = 0; i < len; i++) {
         let minIndex = i;
         for (let j = i + 1; j < len; j++) {
+            if (cancelSorting) return;
             if (array[j] < array[minIndex]) {
                 minIndex = j;
             }
@@ -89,6 +99,7 @@ async function insertionSort(array, ctx, barWidth) {
         let key = array[i];
         let j = i - 1;
         while (j >= 0 && array[j] > key) {
+            if (cancelSorting) return;
             array[j + 1] = array[j];
             drawArray(ctx, array, barWidth, [j, j + 1]);
             await sleep(50);
@@ -106,8 +117,18 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function startSortingAnimations(barWidth) {
+    sortingInProgress = true;
+    cancelSorting = false;
+    Promise.all([
+        bubbleSort(array1, ctx1, barWidth),
+        selectionSort(array2, ctx2, barWidth),
+        insertionSort(array3, ctx3, barWidth)
+    ]).then(() => {
+        sortingInProgress = false;
+    });
+}
+
 window.addEventListener('resize', updateCanvasSizes);
 updateCanvasSizes();
-bubbleSort(array1, ctx1, canvas1.width / arraySize);
-selectionSort(array2, ctx2, canvas2.width / arraySize);
-insertionSort(array3, ctx3, canvas3.width / arraySize);
+startSortingAnimations(canvas1.width / arraySize);
